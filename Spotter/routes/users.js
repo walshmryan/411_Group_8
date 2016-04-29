@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/cs411a2');
 //command when mongo misbehaving:  brew services start mongodb
 
 var Schema = mongoose.Schema;
-var track = new Schema({
+var artist = new Schema({
     artist: String,
     bio: String,
     songs: [],
@@ -30,7 +30,7 @@ var userData = new Schema({
     strict: 'throw' //throw error when invalid track attempted
 });
 
-var tune = mongoose.model('tune', track);
+var tune = mongoose.model('tune', artist);
 var userTop = mongoose.model('userTop', userData);
 
 var LastFmNode = require('lastfm').LastFmNode;
@@ -247,6 +247,9 @@ router.get('/db/:artist', function(req, res, next) {
                             data.push(tracks);
 
                             return data;
+                        })
+                        .catch(function(err) {
+                            console.log('Error retrieving ' + artistName);
                         });
                 })
                 .then(function(data) {
@@ -269,6 +272,9 @@ router.get('/db/:artist', function(req, res, next) {
                             data.push(spotifyTrack.tracks.items[0].id);
                             return data;
 
+                        })
+                        .catch(function(err) {
+                            console.log('Error retrieving ' + artistName);
                         });
 
                 })
@@ -294,7 +300,7 @@ router.get('/db/:artist', function(req, res, next) {
 
                         })
                         .catch(function(err) {
-                            console.log('Error retrieving all IDs for ' + artistName);
+                            console.log('Error retrieving ' + artistName);
                         });
 
                 })
@@ -320,7 +326,7 @@ router.get('/db/:artist', function(req, res, next) {
 
                         })
                         .catch(function(err) {
-                            console.log('Error retrieving all IDs for ' + artistName);
+                            console.log('Error retrieving ' + artistName);
                         });
 
                 })

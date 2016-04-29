@@ -39,7 +39,7 @@
         <button class="b1 w3-btn w3-amber w3-hover-black w3-round w3-tiny" ng-click="getArtist(name)">Search</button>
         <button class="b2 w3-btn w3-amber w3-hover-black w3-round w3-tiny" ng-click="getAllArtists()">Show All Artists</button>
         <ul id="noBullets">
-            <li style="text-align: left; color: whitesmoke; font-weight: bold" ng-repeat="name in artists"><span>{{name.artist}} Plays: {{name.popularity}} {{name.bio}}</span></li>
+            <li style="text-align: left; color: whitesmoke; font-weight: bold" ng-repeat="name in artists"><span>{{name.artist}} {{name.bio}}</span></li>
         </ul>
 
         <div style="background-color: rgba(183, 174, 173, 0.5); border-radius: 12px; padding-top: 5px; padding-left: 5px; padding-right: 5px">
